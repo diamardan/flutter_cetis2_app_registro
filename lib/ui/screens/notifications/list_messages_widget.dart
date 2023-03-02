@@ -75,7 +75,14 @@ class _NMessagesListState extends State<NMessagesList> {
         n.Notification notification = n.Notification.fromJson(data);
         return _notificationBox(notification);
       },
-      query: query.orderBy("sent_date", descending: true),
+      query: FirebaseFirestore.instance
+          .collection('schools')
+          .doc(school)
+          .collection("registros")
+          .doc(user.id)
+          .collection("notifications")
+          .where("origin", isEqualTo: "message")
+          .orderBy("sent_date", descending: true),
       isLive: true,
     );
   }
