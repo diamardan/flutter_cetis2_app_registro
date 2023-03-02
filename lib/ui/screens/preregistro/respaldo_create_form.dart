@@ -339,7 +339,7 @@ class _PreregFormState extends State<PreregForm> {
                     return Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
-                        RaisedButton(
+                        MaterialButton(
                           color: Colors.blue,
                           onPressed: details.onStepContinue,
                           child: const Text(
@@ -347,7 +347,7 @@ class _PreregFormState extends State<PreregForm> {
                             style: TextStyle(color: Colors.white),
                           ),
                         ),
-                        RaisedButton(
+                        ElevatedButton(
                           onPressed: details.onStepCancel,
                           child: const Text('Atrás'),
                         ),
