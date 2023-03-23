@@ -12,6 +12,8 @@ class Wrapper extends StatelessWidget {
     final firebaseUser = Provider.of<User>(context);
 
     if (firebaseUser != null) {
+      print('aqui va el firebaseUser');
+      print(firebaseUser);
       if (!userProvider.isLoggingIn) userProvider.initUSer();
       return LayoutScreen();
     } else {

@@ -102,6 +102,7 @@ class _LoginScreenState extends State<LoginScreen> {
       }
     } on PlatformException catch (e) {
       if (e.code == BarcodeScanner.cameraAccessDenied) {
+        setLoading(false);
         showDialogPermissions(context);
       } else {
         print('error: $e');
@@ -448,8 +449,8 @@ class _LoginScreenState extends State<LoginScreen> {
         builder: (context) {
           return AlertDialog(
             title: Text('Sin acceso a Cámara'),
-            content:
-                Text('Permitir el acceso de la Cámara para poder escanear'),
+            content: Text(
+                'Permitir el acceso de la Cámara para poder escanear su código QR'),
             actions: <Widget>[
               TextButton(
                 child: Text('Ok'),
