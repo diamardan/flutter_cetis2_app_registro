@@ -74,11 +74,12 @@ class _LoginScreenState extends State<LoginScreen> {
       print(response);
       if (response["code"].toString() != "sign_in_success") {
         /* } else */
-        setLoading(false);
         await NotifyUI.showError(context, messageTitle, response["message"]);
+        setLoading(false);
       }
     } catch (error) {
       await NotifyUI.showError(context, messageTitle, error.toString());
+      setLoading(false);
     }
   }
 
@@ -103,7 +104,7 @@ class _LoginScreenState extends State<LoginScreen> {
     } on PlatformException catch (e) {
       if (e.code == BarcodeScanner.cameraAccessDenied) {
         setLoading(false);
-        showDialogPermissions(context);
+        /* showDialogPermissions(context); */
       } else {
         print('error: $e');
       }
