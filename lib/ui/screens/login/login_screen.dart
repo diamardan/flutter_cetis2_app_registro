@@ -100,11 +100,15 @@ class _LoginScreenState extends State<LoginScreen> {
         /* } else { */
         setLoading(false);
         await NotifyUI.showError(context, messageTitle, response["message"]);
-      }
+      } /* else {
+        // Esperar 2 segundos antes de llamar a initUser()
+        await Future.delayed(Duration(seconds: 2));
+
+        Provider.of<UserProvider>(context, listen: false).initUSer();
+      } */
     } on PlatformException catch (e) {
       if (e.code == BarcodeScanner.cameraAccessDenied) {
-        setLoading(false);
-        /* showDialogPermissions(context); */
+        showDialogPermissions(context);
       } else {
         print('error: $e');
       }
@@ -198,7 +202,8 @@ class _LoginScreenState extends State<LoginScreen> {
         height: 780,
         padding: EdgeInsets.symmetric(
             horizontal: MediaQuery.of(context).size.width * .12),
-        child: Column(mainAxisAlignment: MainAxisAlignment.center,
+        child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             // mainAxisSize: MainAxisSize.min,
             children: [
               SizedBox(

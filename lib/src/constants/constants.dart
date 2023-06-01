@@ -1,18 +1,19 @@
 class AppConstants {
   //backendUrl hace referencia ya sea a la url de producción o a la de desarrollo
-  static const backendUrl = 'https://escuelas.identaflix.com/api/v1/firebase';
+  static const backendUrl = 'https://escuelas.datamexab.mx/api/v1/firebase';
   //static const backendUrl = 'http://192.168.1.72:5000/api/v1/firebase';
-  static const backendPublicUrl = 'https://escuelas.identaflix.com/public';
-  static const backendBaseUrl = 'https://escuelas.identaflix.com/api/v1';
+  static const backendPublicUrl = 'https://escuelas.datamexab.mx/public';
+  static const backendBaseUrl = 'https://escuelas.datamexab.mx/api/v1';
   //static const whatsappNumber = '+5215520779800';
   static const whatsappNumber = '+5215561146039';
   static const supportNumber = '5561146039';
   static const whatsappText = 'Hola me comunico del Cetis 2';
   static const accesosById = backendUrl + '/cetis2/accesos/getAllById';
   static const accesosAll = backendUrl + '/cetis2/accesos/getAll';
+  static const max_devices_allowed = 10;
 
   static const pdfPagoUrl =
-      "https://escuelas.identaflix.com/public/pdfs/LUMEN%20FORMATO%20PAGO.pdf";
+      "https://escuelas.datamexab.mx/public/pdfs/LUMEN%20FORMATO%20PAGO.pdf";
   static const urlAttendance = "https://attendance-lumen.web.app/";
   static const urlAttendanceIdPosition = 33;
   //fsCollectionName almacena el nombre de la collection que hace referencia a la escuela sobre la que se va a trabajar

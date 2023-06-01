@@ -61,37 +61,37 @@ class _AccessListState extends State<AccessList> {
   }
 
   _notification(n.Notification notification) {
-    return Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            color: Colors.white,
-            child: Column(
-              children: [
-                _header(notification),
-                SizedBox(
-                  height: 10,
-                ),
-                //_body(notification)
-              ],
+    return Column(children: [
+      Container(
+        color: Colors.white,
+        child: Column(
+          children: [
+            _header(notification),
+            SizedBox(
+              height: 10,
             ),
-          )
-        ]);
+            //_body(notification)
+          ],
+        ),
+      )
+    ]);
   }
 
   _header(n.Notification notification) {
-    var dateTime =
-        DateFormat("dd-MM-y HH:mm").format(notification.receivedDate);
+    List<String> splittedDate = notification.message.split(':');
+    DateTime attendanceTime = DateTime.parse(
+      splittedDate[1].trim() + splittedDate[2],
+    );
+    print(attendanceTime);
+    var dateTime = DateFormat("dd-MM-y HH:mm").format(attendanceTime);
 
     return Row(children: [
       Expanded(
           child: Container(
               margin: EdgeInsets.only(left: 10, top: 10, right: 10),
               decoration: BoxDecoration(
-                // color: Colors.orange.shade50,
-                // border: Border.all(width: 0.5, color: Color(0XFFABABAB)),
+                //  color: Colors.orange.shade50,
+                //  border: Border.all(width: 0.5, color: Color(0XFFABABAB)),
                 shape: BoxShape.rectangle,
                 borderRadius: const BorderRadius.all(
                   Radius.circular(5.0),

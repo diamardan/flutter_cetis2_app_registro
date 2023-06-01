@@ -1,3 +1,4 @@
+import 'package:cetis2_app_registro/src/constants/constants.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Registration {
@@ -66,7 +67,8 @@ class Registration {
         firmaDrive: json["firma_drive"],
         fecha_registro: json["fecha_registro"],
         devices: json["devices"] ?? [],
-        maxDevicesAllowed: json["max_devices_allowed"] ?? 3,
+        maxDevicesAllowed:
+            json["max_devices_allowed"] ?? AppConstants.max_devices_allowed,
       );
 
   @override

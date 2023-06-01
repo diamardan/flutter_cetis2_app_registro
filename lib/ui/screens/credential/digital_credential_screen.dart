@@ -7,13 +7,13 @@ import 'package:cetis2_app_registro/ui/res/colors.dart';
 import 'package:cetis2_app_registro/ui/screens/credential/render_crendetial_screen.dart';
 import 'package:cetis2_app_registro/src/utils/imageUtil.dart';
 import 'package:cetis2_app_registro/src/utils/widget_to_image.dart';
-import 'package:ext_storage/ext_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart'; // for date format
 import 'package:pdf/widgets.dart' as pw;
 import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 import 'package:barcode_widget/barcode_widget.dart';
+import 'package:path_provider/path_provider.dart';
 
 class DigitalCredentialScreen extends StatefulWidget {
   @override
@@ -30,6 +30,8 @@ class _DigitalCredentialScreenState extends State<DigitalCredentialScreen> {
   Uint8List bytes2;
   bool visibleButton;
   Registration register;
+  String savePDFFolderName;
+
   @override
   void initState() {
     super.initState();
@@ -836,8 +838,7 @@ class _DigitalCredentialScreenState extends State<DigitalCredentialScreen> {
 // the downloads folder path
     //Directory output = await getDownloadsDirectory();
     // String tempPath = '/storage/emulated/0/Download';
-    String tempPath = await ExtStorage.getExternalStoragePublicDirectory(
-        ExtStorage.DIRECTORY_DOWNLOADS);
+    String tempPath = await getPublicExternalStorageDirectoryPath();
     String apellidos =
         register.surnames != null ? register.surnames : "SIN APELLIDOS";
     String nombre = register.name != null ? register.name : "SIN NOMBRE";
@@ -862,6 +863,25 @@ class _DigitalCredentialScreenState extends State<DigitalCredentialScreen> {
                   pdfName: pdfName,
                 )));
     //launch(filePath);
+  }
+
+  Future<String> getPublicExternalStorageDirectoryPath() async {
+    Directory directory;
+    if (Platform.isIOS) {
+      // Platform is imported from 'dart:io' package
+      directory = await getApplicationDocumentsDirectory();
+      savePDFFolderName = 'Documentos';
+    } else if (Platform.isAndroid) {
+      directory = Directory('/storage/emulated/0/Download');
+      savePDFFolderName = 'Descargas';
+      if (!await directory.exists()) {
+        directory = await getExternalStorageDirectory();
+        savePDFFolderName = directory.path;
+      }
+
+      //directory = await getExternalStorageDirectory();
+    }
+    return directory.path;
   }
 }
 

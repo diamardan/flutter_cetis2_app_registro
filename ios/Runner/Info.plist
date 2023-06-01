@@ -55,7 +55,15 @@
 	<key>NSContactsUsageDescription</key>
 	<string>Deseas permitir el acceso a tus contactos</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Permite el acceso a tu ubicación cuando la aplicación se esté usando</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>Permitir el acceso a tu ubicación</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Permitir el acceso a tu ubicación</string>
+	<key>NSLocationUsageDescription</key>
+	<string>Permitir el acceso a tu ubicación</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>your usage description here</string>
 	<key>NSMicrophoneUsageDescription </key>
 	<string>Necesito acceso al micrófono</string>
 	<key>NSMotionUsageDescription</key>
@@ -64,6 +72,11 @@
 	<string>Para seleccionar el QR de inicio de sesión deberás permitir el acceso a la galería. Si no aceptas ésate permiso no podrás iniciar sesión por éste método.</string>
 	<key>NSSpeechRecognitionUsageDescription</key>
 	<string>Permitir el acceso al reconocimiento de voz</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+		<string>remote-notification</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -84,6 +97,12 @@
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 	<key>io.flutter.embedded_views_preview</key>
+	<true/>
+	<key>UIApplicationSupportsIndirectInputEvents</key>
+	<true/>
+	<key>LSSupportsOpeningDocumentsInPlace</key>
+	<true/>
+	<key>UIFileSharingEnabled</key>
 	<true/>
 </dict>
 </plist>

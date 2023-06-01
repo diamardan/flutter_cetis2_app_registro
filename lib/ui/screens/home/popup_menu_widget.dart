@@ -113,7 +113,7 @@ PopupMenuItem _whatsapp(BuildContext ctx) {
     child: Row(
       children: [
         Icon(
-          Icons.whatsapp_rounded,
+          Icons.help,
           color: Colors.black,
         ),
         Text("  Ayuda Whatsapp"),

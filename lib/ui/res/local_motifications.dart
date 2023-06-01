@@ -1,4 +1,5 @@
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class LocalNotificationsService {
   static final LocalNotificationsService _notificationService =
@@ -20,7 +21,16 @@ class LocalNotificationsService {
     importance: Importance.high,
   );
 
+  Future<void> requestPermission() async {
+    await Permission.notification.isDenied.then((value) {
+      if (value) {
+        Permission.notification.request();
+      }
+    });
+  }
+
   Future<void> init() async {
+    await requestPermission();
     // channel for heads up notifications
     await _flutterLocalNotificationsPlugin
         .resolvePlatformSpecificImplementation<
@@ -34,9 +44,9 @@ class LocalNotificationsService {
     // setting for ios
     final IOSInitializationSettings initializationSettingsIOS =
         IOSInitializationSettings(
-      requestSoundPermission: false,
-      requestBadgePermission: false,
-      requestAlertPermission: false,
+      requestSoundPermission: true,
+      requestBadgePermission: true,
+      requestAlertPermission: true,
       //  onDidReceiveLocalNotification: onDidReceiveLocalNotification,
     );
 
@@ -64,7 +74,7 @@ class LocalNotificationsService {
       NotificationDetails(
           android: AndroidNotificationDetails(_channel.id, _channel.name,
               /* _channel.description, */
-              icon: "@mipmap/ic_launcher"
+              icon: "@mipmap/launch"
               // other properties...
               )), /* payload: "go-to-notification"*/
     );
